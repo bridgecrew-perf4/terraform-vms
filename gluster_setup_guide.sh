@@ -11,8 +11,8 @@ echo "192.168.1.14 vm-gfs-04" >> /etc/hosts
 echo "192.168.1.15 vm-gfs-05" >> /etc/hosts
 
 # create volume group to gluster
-pvcreate /dev/sdc
-vgcreate vg_gluster /dev/sdc
+pvcreate /dev/sdb
+vgcreate vg_gluster /dev/sdb
 lvcreate -l 100%FREE -n brick vg_gluster
 
 # prepares for XFS bricks 
