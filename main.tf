@@ -280,7 +280,7 @@ resource "azurerm_managed_disk" "vms" {
 ###
 resource "azurerm_virtual_machine" "vms" {
   count                            = var.total_node_count
-  name                             = "vm_${format("%02d", count.index + 1)}"
+  name                             = "vm-gfs-${format("%02d", count.index + 1)}"
   location                         = azurerm_resource_group.rgs.location
   resource_group_name              = azurerm_resource_group.rgs.name
   network_interface_ids            = [element(azurerm_network_interface.nic_01.*.id, count.index), element(azurerm_network_interface.nic_02.*.id, count.index)]
@@ -306,7 +306,7 @@ resource "azurerm_virtual_machine" "vms" {
   }
 
   os_profile {
-    computer_name  = "vm-${format("%02d", count.index + 1)}"
+    computer_name  = "vm-gfs-${format("%02d", count.index + 1)}"
     admin_username = var.admin_username
     admin_password = var.admin_password
   }
